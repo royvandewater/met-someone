@@ -1,7 +1,6 @@
 package met.someone
 
 class Meeting {
-
-    static constraints = {
-    }
+    Date dateCreated
+    Date lastUpdated
 }
