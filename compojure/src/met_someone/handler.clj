@@ -1,14 +1,14 @@
 (ns met-someone.handler
   (:use compojure.core)
-  (:require [met-someone.views :as views]
+  (:require [met-someone.views.meeting :as meeting]
             [compojure.handler :as handler]
             [compojure.route :as route]
             [clojure.java.jdbc :as sql]))
 
 (defroutes app-routes
-  (GET  "/"    []               (views/meeting-index))
-  (GET  "/new" []               (views/meeting-new))
-  (POST "/"    {params :params} (views/meeting-create params))
+  (GET  "/"    []               (meeting/index))
+  (GET  "/new" []               (meeting/new))
+  (POST "/"    {params :params} (meeting/create params))
   (route/resources "/")
   (route/not-found "Not Found"))
 

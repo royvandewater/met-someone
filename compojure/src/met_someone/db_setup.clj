@@ -1,4 +1,4 @@
-(ns met-someone.setup
+(ns met-someone.db-setup
   (:gen-class)
   (:require [clojure.java.jdbc :as sql]))
 
