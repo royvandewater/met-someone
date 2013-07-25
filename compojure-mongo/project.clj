@@ -5,7 +5,8 @@
                  [compojure "1.1.5"]
                  [hiccup "1.0.2"]
                  [org.clojure/java.jdbc "0.2.3"]
-                 [com.h2database/h2 "1.3.170"]]
+                 [com.h2database/h2 "1.3.170"]
+                 [congomongo "0.4.1"]]
   :plugins [[lein-ring "0.8.5"]]
   :ring {:handler met-someone.handler/app}
   :profiles

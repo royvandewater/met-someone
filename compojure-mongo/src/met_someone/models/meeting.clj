@@ -1,20 +1,15 @@
 (ns met-someone.models.meeting
-  (:require [clojure.java.jdbc :as sql]))
+  (:require [somnium.congomongo :as mongo]))
 
-(def db-spec {:classname "org.h2.Driver"
-              :subprotocol "h2:file"
-              :subname "db/met-someone"})
+(def connection
+  (mongo/make-connection "met-someone", :host "127.0.0.1", :port 27017))
 
 (defn current_time [] (new java.util.Date))
 
 (defn create []
-  (let [results (sql/with-connection db-spec
-    (sql/insert-record :meetings {:created_at (current_time)}))]
-    (assert (= 1 (count results)))
-    (first (vals results))))
+  (mongo/with-mongo connection
+    (mongo/insert! :meetings {:created_at (current_time)})))
 
 (defn all []
-  (sql/with-connection db-spec
-    (sql/with-query-results res 
-      ["SELECT id, created_at FROM meetings"]
-      (doall res))))
+  (mongo/with-mongo connection
+    (mongo/fetch :meetings)))
