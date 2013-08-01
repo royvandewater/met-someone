@@ -1,6 +1,6 @@
 <h1>Listing meetings</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Met at</th>
@@ -14,14 +14,8 @@
     <% @meetings.each do |meeting| %>
       <tr>
         <td><%= meeting.created_at %></td>
-        <td><%= link_to 'Show', meeting %></td>
-        <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
-        <td><%= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Never Happened', meeting, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Meeting', new_meeting_path %>
