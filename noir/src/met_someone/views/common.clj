@@ -5,8 +5,10 @@
 (defpartial layout [& content]
             (html5
               [:head
-               [:title "met-someone"]
-               (include-css "/css/reset.css")]
+                [:title "met-someone"]
+                (include-css "/css/bootstrap.css"
+                             "/css/style.css")]
               [:body
-               [:div#wrapper
-                content]]))
+                [:div.container 
+                  [:div.meeting-template
+                    content]]]))
