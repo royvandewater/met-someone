@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="met-someone">
 <head>
   <title>MetSomeone</title>
   <%= stylesheet_link_tag    "application", :media => "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body ng-controller="MeetingsController">
 
 <div class="navbar">
   <div class="container">
     <%= link_to "Met Someone", root_path, :class => 'navbar-brand' %>
-    <%= form_for Meeting.new, :html => {:class => 'navbar-form'} do |f| %>
-      <%= f.submit :value => 'Met Someone', :class => 'btn btn-primary' %>
-    <% end %>
+
+    <form ng-submit="createMeeting()" class="navbar-form">
+      <input type="submit" value="Met Someone" class="btn btn-primary" />
+    </form>
   </div>
 </div>
 
