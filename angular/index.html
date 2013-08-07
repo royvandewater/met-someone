@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html ng-app="met-someone">
+<head>
+  <title>MetSomeone</title>
+  <link rel="stylesheet" type="text/css" href="/angular/css/bootstrap.css">
+  <script type="text/javascript" src="/angular/js/jquery.js"></script>
+  <script type="text/javascript" src="/angular/js/underscore.js"></script>
+  <script type="text/javascript" src="/angular/js/bootstrap.js"></script>
+  <script type="text/javascript" src="/angular/js/angular.js"></script>
+  <script type="text/javascript" src="/angular/js/angular-resource.js"></script>
+  <script type="text/javascript" src="/angular/js/meetings.js"></script>
+</head>
+
+<body ng-controller="MeetingsController">
+
+<div class="navbar">
+  <div class="container">
+    <a href="/angular" class="navbar-brand">Met Someone</a>
+
+    <form ng-submit="createMeeting()" class="navbar-form">
+      <input type="submit" value="Met Someone" class="btn btn-primary" />
+    </form>
+  </div>
+</div>
+
+<div class="container">
+  <h1>Listing meetings ({{meetings.length}})</h1>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Met at</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="meeting in meetings">
+        <td>{{ meeting.created_at }}</td>
+        <td>
+          <form ng-submit="deleteMeeting(meeting)">
+            <input type="hidden" value="{{meeting.id}}" />
+            <input type="submit" value="Never Happened" class="btn btn-danger" />
+          </form>
+        </td>
+      </tr>
+    </tbody>
+  </table> 
+</div>
+
+</body>
+</html>
